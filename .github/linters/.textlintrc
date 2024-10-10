@@ -1,0 +1,21 @@
+{
+  "filters": {
+    "comments": true
+  },
+  "rules": {
+    "terminology": false
+    // "textlint-rule-ginger": true,
+    // "textlint-rule-spellchecker": true,
+    // "textlint-rule-write-good": true,
+    // "textlint-rule-terminology": {
+    //   "exclude": [
+    //     "ssh",
+    //     "git",
+    //     "markdown"
+    //   ]
+    // },
+    // "textlint-rule-spelling": {
+    //   "language": "en"
+    // }
+  }
+}
