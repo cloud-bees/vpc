@@ -1,0 +1,21 @@
+ignorePatterns:
+  - "!.*"
+  - "**/node_modules/.*"
+
+parser: "@typescript-eslint/parser"
+
+plugins:
+  - "@typescript-eslint"
+
+overrides:
+  # JSON files
+  - files:
+      - "*.json"
+    extends:
+      - plugin:jsonc/recommended-with-json
+    parser: "jsonc-eslint-parser"
+    parserOptions:
+      # Ensure proper syntax is applied for JSON with comments
+      jsonSyntax: "JSONC" # JSONC allows comments in JSON
+    rules:
+      jsonc/no-comments: off # Disables comment errors in JSON files

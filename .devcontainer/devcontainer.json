@@ -1,0 +1,43 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+  "name": "Terraform",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".",
+    "args": {}
+  },
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    // Version of devcontainer features to use https://github.com/orgs/devcontainers/packages?repo_name=features
+    "ghcr.io/devcontainers/features/aws-cli:1.1": {},
+    "ghcr.io/devcontainers/features/common-utils:2.5.1": {},
+    // Installs the Terraform CLI and optionally TFLint, Terragrunt, sentinel, tfsec, terraform-docs.
+    // https://github.com/devcontainers/features/blob/main/src/terraform/README.md#options
+    "ghcr.io/devcontainers/features/terraform:1.3.8": {
+      "version": "1.9.0",
+      "tflint": "0.47.0",
+      "terragrunt": "0.67.14",
+      "installSentinel": true,
+      "installTFsec": true,
+      "installTerraformDocs": true
+      // "httpProxy": "http://proxy:8080",
+    },
+    "ghcr.io/devcontainers-contrib/features/infracost:1.0.5": {
+      "version": "0.10.39"
+    },
+    "ghcr.io/devcontainers-contrib/features/terrascan:1.0.1": {
+      "version": "1.19.1"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2.12.0": {
+      "dockerDashComposeVersion": "none",
+      "installDockerBuildx": false
+    }
+  },
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "scripts/devcontainer/post-create.sh",
+  "remoteUser": "${localEnv:USER:vscode}",
+  "updateContentCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+  "runArgs": ["--name", "vpc-devcontainer"]
+}
